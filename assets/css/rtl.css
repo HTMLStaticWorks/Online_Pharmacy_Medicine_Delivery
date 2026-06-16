@@ -1,0 +1,87 @@
+/* RTL Specific Overrides */
+html[dir="rtl"] {
+  direction: rtl;
+}
+
+html[dir="rtl"] body {
+  text-align: right;
+}
+
+/* Navbar adjustments */
+html[dir="rtl"] .nav-drawer {
+  right: auto;
+  left: -100%;
+  box-shadow: 10px 0 30px rgba(0,0,0,0.1);
+}
+
+html[dir="rtl"] .nav-drawer.open {
+  left: 0;
+  right: auto;
+}
+
+html[dir="rtl"] .footer-col h4::after {
+  left: auto;
+  right: 0;
+}
+
+html[dir="rtl"] .footer-links a::after {
+  left: auto;
+  right: 0;
+  transform-origin: right;
+}
+
+html[dir="rtl"] .footer-links a:hover::after {
+  transform-origin: left;
+}
+
+/* Form indicators & icons */
+html[dir="rtl"] .btn svg {
+  transform: scaleX(-1);
+}
+
+html[dir="rtl"] .badge-icon {
+  margin-left: 0;
+}
+
+/* Dashboard Sidebar RTL Layout */
+html[dir="rtl"] .dashboard-container {
+  flex-direction: row-reverse;
+}
+
+html[dir="rtl"] .sidebar-nav button {
+  text-align: right;
+}
+
+html[dir="rtl"] .sidebar-nav button svg {
+  margin-right: 0;
+  margin-left: 12px;
+}
+
+/* Checkout step lines */
+html[dir="rtl"] .step-item::after {
+  left: auto;
+  right: 50%;
+}
+
+html[dir="rtl"] .search-bar button {
+  right: auto;
+  left: 4px;
+}
+
+html[dir="rtl"] .search-bar input {
+  padding-left: 50px;
+  padding-right: 20px;
+}
+
+/* Timeline alignment */
+html[dir="rtl"] .timeline-item {
+  border-left: none;
+  border-right: 3px solid var(--accent-primary);
+  padding-left: 0;
+  padding-right: 30px;
+}
+
+html[dir="rtl"] .timeline-item::after {
+  left: auto;
+  right: -8px;
+}
