@@ -8,6 +8,7 @@ document.addEventListener('DOMContentLoaded', () => {
   initScrollReveal();
   initScrollTopButton();
   initNavDropdowns();
+  initActiveMenu();
 });
 
 // 1. Scroll-related Navbar changes
@@ -43,13 +44,13 @@ function initMobileMenu() {
   function openDrawer() {
     drawer.classList.add('open');
     overlay.classList.add('active');
-    document.body.style.overflow = 'hidden';
+    // document.body.style.overflow = 'hidden';
   }
   
   function closeDrawer() {
     drawer.classList.remove('open');
     overlay.classList.remove('active');
-    document.body.style.overflow = '';
+    // document.body.style.overflow = '';
   }
   
   hamburger.addEventListener('click', () => {
@@ -270,6 +271,38 @@ function initNavDropdowns() {
   document.addEventListener('click', (e) => {
     if (!dropdownTrigger.contains(e.target)) {
       dropdownTrigger.classList.remove('active');
+    }
+  });
+}
+
+// 9. Highlight Active Menu State
+function initActiveMenu() {
+  const currentPath = window.location.pathname.split('/').pop() || 'index.html';
+  
+  // Clean up all active states first
+  document.querySelectorAll('.nav-menu a, .drawer-menu a').forEach(link => {
+    link.classList.remove('active');
+  });
+
+  // Highlight top nav
+  const navLinks = document.querySelectorAll('.nav-menu a');
+  navLinks.forEach(link => {
+    if (link.getAttribute('href') === currentPath) {
+      link.classList.add('active');
+      // If it's inside a dropdown, highlight the parent too
+      const dropdown = link.closest('.nav-item-dropdown');
+      if (dropdown) {
+        const parentLink = dropdown.querySelector('.nav-home');
+        if (parentLink) parentLink.classList.add('active');
+      }
+    }
+  });
+
+  // Highlight drawer nav
+  const drawerLinks = document.querySelectorAll('.drawer-menu a');
+  drawerLinks.forEach(link => {
+    if (link.getAttribute('href') === currentPath) {
+      link.classList.add('active');
     }
   });
 }
