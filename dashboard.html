@@ -803,7 +803,7 @@
       .metrics-grid> :nth-child(3):last-child {
         grid-column: 1 / -1;
         margin: 0 auto;
-        width: calc(50% - 10px);
+        width: 100%;
       }
     }
 
@@ -870,7 +870,7 @@
       <!-- Navigation buttons -->
       <nav class="sidebar-nav">
 
-        <button class="nav-btn "  data-panel="overview">
+        <button class="nav-btn active"  data-panel="overview">
           <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
             <rect width="7" height="9" x="3" y="3" rx="1" />
             <rect width="7" height="5" x="14" y="3" rx="1" />
@@ -1090,7 +1090,7 @@
       <main class="content-area">
 
         <!-- ① OVERVIEW -->
-        <section id="overview" class="dash-panel " >
+        <section id="overview" class="dash-panel active" >
           <h2 class="panel-heading">Patient Health Overview</h2>
           <p class="panel-sub">Welcome back, Jane. Here's a summary of your health account.</p>
 
@@ -1302,9 +1302,9 @@
             </div>
             <div style="display:flex; gap:10px;">
               <input type="text" id="chat-input" placeholder="Type your message..."
-                style="flex:1; padding:11px 14px; border-radius:10px; border:1px solid var(--border-color); background:var(--bg-primary); color:var(--text-primary); font-family:var(--font-family); font-size:0.9rem; outline:none;">
+                style="flex:1; min-width:0; padding:11px 14px; border-radius:10px; border:1px solid var(--border-color); background:var(--bg-primary); color:var(--text-primary); font-family:var(--font-family); font-size:0.9rem; outline:none;">
               <button class="btn btn-primary" id="chat-send"
-                style="padding:11px 22px; border-radius:10px;">Send</button>
+                style="padding:11px 22px; border-radius:10px; flex-shrink:0;">Send</button>
             </div>
           </div>
         </section>
@@ -1462,6 +1462,12 @@
         document.getElementById('sidebar').classList.remove('open');
         document.getElementById('sidebar-overlay').classList.remove('open');
       });
+    });
+
+    window.addEventListener('load', () => {
+      if (window.innerWidth <= 1024) {
+        document.getElementById('sidebar-toggle').click();
+      }
     });
 
     /* ══ Date in topbar ══ */

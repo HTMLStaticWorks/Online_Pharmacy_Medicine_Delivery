@@ -44,13 +44,13 @@ function initMobileMenu() {
   function openDrawer() {
     drawer.classList.add('open');
     overlay.classList.add('active');
-    // document.body.style.overflow = 'hidden';
+    document.body.style.overflow = 'hidden';
   }
   
   function closeDrawer() {
     drawer.classList.remove('open');
     overlay.classList.remove('active');
-    // document.body.style.overflow = '';
+    document.body.style.overflow = '';
   }
   
   hamburger.addEventListener('click', () => {
